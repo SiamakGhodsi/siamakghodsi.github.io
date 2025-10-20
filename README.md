@@ -1,2 +1,2 @@
 # siamakghodsi.github.io
-My personal website. I will put the lates news about e here. You can expect quarterly updates with new publications, news about my projects and my PhD Journey.
+My personal website. I will publish the latest news about my research here. You can expect quarterly updates with new publications, project updates, and my overall PhD Journey.
