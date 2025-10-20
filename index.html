@@ -133,24 +133,33 @@
     <script src="./assets/js/custom.js"></script>
     
     <script>
-        // Load CV content
-        fetch('cv-content.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('cv-container').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error loading CV:', error);
-                document.getElementById('cv-container').innerHTML = '<p style="color: red;">Error loading CV content.</p>';
-            });
+        // Load all content sections
+        const sections = {
+            'about-container': 'content/about.html',
+            'cv-container': 'content/cv.html',
+            'publications-container': 'content/publications.html',
+            'news-container': 'content/news.html'
+        };
+
+        // Load each section
+        Object.entries(sections).forEach(([containerId, filePath]) => {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(containerId).innerHTML = data;
+                })
+                .catch(error => {
+                    console.error(`Error loading ${filePath}:`, error);
+                    document.getElementById(containerId).innerHTML = 
+                        `<p style="color: red;">Error loading content.</p>`;
+                });
+        });
     </script>
     
 </body>
-
 </html>
-
-
-
-
-
-
